@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width; initial-scale=1.0;">
+    <meta name="keywords" content="朱华社区 Julia JulialangOrgCN Quick-Start">
+    <title>二十分钟牵手朱莉娅 - 朱华社区</title>
+    <link rel="shortcut icon" type="image/x-icon" href="pictures/favicon.ico">
+    <link rel="stylesheet" type="text/css" href="default.css">
+    <script type="text/javascript" src="https://cdn.bootcss.com/showdown/1.8.6/showdown.min.js"></script>
+    <script type="text/javascript">
+        var show = function(url) {
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function (event) {
+                var _xhr_ = event.srcElement || event.target;
+                if (_xhr_.readyState == 4 && _xhr_.status == 200) {
+                    var converter = new showdown.Converter();
+                    var board = document.getElementById("board");
+                    board.innerHTML = converter.makeHtml(_xhr_.responseText);
+                }
+            }
+            xhr.open("GET", url, true);
+            xhr.send();
+        };
+    </script>
+    <style rel="stylesheet" type="text/css">
+        body {
+            width: 85%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    </style>
+</head>
+<body onload="show('quick-start.md');">
+    <div id="board"></div>
+</body>
+</html>
